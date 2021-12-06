@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Index.css') }}">
+    <title>Car Price Prediction</title>
+</head>
+
+<body>
+
+    <div id="particles-js">
+        <div id="form">
+            <center>
+                <h1 id="formText">Predictive analysis</h1>
+            </center>
+            <form action="{{ url_for('predict')}}" method="post" id="inputForm">
+                <input id="input" id="first" name="Year" type = 'number' placeholder="Manufacturing Year" required = 'required' min = 1920 max = 2021>
+                <input id="input" id="second" name="Present_Price" type = 'number' placeholder="Current Original Price (Lakhs)" step = .001 min = 0.1 required="required" >
+                <input id="input" id="third" name="Kms_Driven"  placeholder=" Kms Driven" required="required" >
+                <input id="input" id="fourth" name="Owner" type="number" placeholder="Total Owners" required="required" max = 3 min = 0>
+                <label id="labelText">Fuel Type</label>
+                <select id="input" name="Fuel_Type_Petrol" id="fuel" required="required">
+                    <option id = "option" value="Petrol">Petrol</option>
+                    <option id = "option" value="Diesel">Diesel</option>
+                    <option id = "option" value="Diesel">CNG</option>
+                </select>
+                <label  id="labelText">Ownership Type</label>
+               <select id="input" name="Seller_Type_Individual" id="resea" required="required">
+                    <option id = "option" value="Dealer">Dealer</option>
+                    <option id = "option" value="Individual">Individual</option>
+                </select>
+                <label id="labelText">Transmission Type</label>
+                <select id="input" name="Transmission_Mannual" id="research" required="required">
+                    <option id = "option" value="Mannual">Manual Car</option>
+                    <option id = "option" value="Automatic">Automatic Car</option>
+                </select>
+                <button id = "button" id="sub" type="submit ">Predict</button>
+                <br>
+
+            </form>
+            <center><h3 id="outputText">{{ prediction_text }}<h3></center>
+        </div>
+       
+      
+    </div>
+
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    particlesJS.load('particles-js', "{{ url_for('static',filename='Particles.json') }}", function () {
+        console.log('callback - particles.js config loaded');
+    });
+
+</script>
+
+</html>
