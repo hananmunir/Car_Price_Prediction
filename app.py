@@ -7,11 +7,6 @@ import sklearn
 from datetime import datetime
 from sklearn.preprocessing import StandardScaler
 
-import logging
-
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
-
 app = Flask(__name__)
 model = pickle.load(open("random_forest_regression_model.pkl", "rb"))
 
